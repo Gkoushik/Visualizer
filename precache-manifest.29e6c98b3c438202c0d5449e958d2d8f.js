@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0bd7ad445153bc88786c202705964c0b",
+    "revision": "df70d9de1ac120a356872667685c20e7",
     "url": "/Visulaizer/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Visulaizer/static/css/2.829c9cb5.chunk.css"
   },
   {
-    "revision": "c4261118ce1e614b98ab",
+    "revision": "2b90e96c39e196402885",
     "url": "/Visulaizer/static/css/main.0163c4fe.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Visulaizer/static/js/2.795ca4b4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c4261118ce1e614b98ab",
-    "url": "/Visulaizer/static/js/main.2c943e94.chunk.js"
+    "revision": "2b90e96c39e196402885",
+    "url": "/Visulaizer/static/js/main.24471ea0.chunk.js"
   },
   {
     "revision": "2c6ecda295185fc63ff1",
