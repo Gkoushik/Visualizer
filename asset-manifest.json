@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Visulaizer/static/css/main.f19a92ba.chunk.css",
+    "main.js": "/Visulaizer/static/js/main.e68f11dd.chunk.js",
+    "main.js.map": "/Visulaizer/static/js/main.e68f11dd.chunk.js.map",
+    "runtime-main.js": "/Visulaizer/static/js/runtime-main.ec8cc12d.js",
+    "runtime-main.js.map": "/Visulaizer/static/js/runtime-main.ec8cc12d.js.map",
+    "static/css/2.c548bf2f.chunk.css": "/Visulaizer/static/css/2.c548bf2f.chunk.css",
+    "static/js/2.5ebd24c6.chunk.js": "/Visulaizer/static/js/2.5ebd24c6.chunk.js",
+    "static/js/2.5ebd24c6.chunk.js.map": "/Visulaizer/static/js/2.5ebd24c6.chunk.js.map",
+    "index.html": "/Visulaizer/index.html",
+    "precache-manifest.aac3325f31bb75fd4fd51e33fde4c8ea.js": "/Visulaizer/precache-manifest.aac3325f31bb75fd4fd51e33fde4c8ea.js",
+    "service-worker.js": "/Visulaizer/service-worker.js",
+    "static/css/2.c548bf2f.chunk.css.map": "/Visulaizer/static/css/2.c548bf2f.chunk.css.map",
+    "static/css/main.f19a92ba.chunk.css.map": "/Visulaizer/static/css/main.f19a92ba.chunk.css.map"
+  }
+}
