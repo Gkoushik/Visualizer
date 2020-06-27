@@ -3,6 +3,9 @@ import Node from "./Node/Node";
 import {dijkstra, getNodesInShortestPathOrder} from "../algorithms/dijkstra";
 import {BFS} from "../algorithms/BFS";
 import {DFS} from "../algorithms/DFS";
+import {Astar} from "../algorithms/Astar";
+import {BestFS} from "../algorithms/BestFS";
+
 import Navbar from "../Pages//Navbar";
 import Rules from "../Pages/Rule";
 
@@ -32,6 +35,9 @@ export default class PathfindingVisualizer extends Component {
     this.state.algo.push(dijkstra);
     this.state.algo.push(BFS);
     this.state.algo.push(DFS);
+    this.state.algo.push(Astar);
+    this.state.algo.push(BestFS);
+
     // const {algo} = this.props.location.state;
     // console.log(algo);
   }
@@ -190,6 +196,7 @@ const createNode = (col, row) => {
     isStart: row === START_NODE_ROW && col === START_NODE_COL,
     isFinish: row === FINISH_NODE_ROW && col === FINISH_NODE_COL,
     distance: Infinity,
+    hdistance: Infinity,
     isVisitednode: false,
     isShortestPath: false,
     isWall: false,

@@ -7,9 +7,10 @@ class Homepage extends Component {
     tags: [
       ["BFS", "1"],
       ["Dijkstra", "0"],
-      ["DFS", "2"],
+      ["DFS (It doesn't garentee shortest path", "2"],
+      ["Astar", "3"],
+      ["BestFS", "4"],
     ],
-    // tags: ["tag1", "tag2", "tag3"],
   };
 
   render() {
