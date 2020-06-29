@@ -1,7 +1,5 @@
 import React, {Component} from "react";
-// import {Link} from "react-router";
-import {Link, Route} from "react-router-dom";
-import Code from "./Code";
+import {Link} from "react-router-dom";
 
 import "./Content.css";
 
@@ -18,9 +16,10 @@ class Content extends Component {
           <ol className="container-fluid  ">
             {this.props.refs.map((tag) => (
               <Link
+                key={tag.id}
                 className="btn btn-primary link"
                 to={{
-                  pathname: "/Code",
+                  pathname: "/code",
                   state: {
                     algo: tag,
                   },

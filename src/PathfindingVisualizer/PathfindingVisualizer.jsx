@@ -5,6 +5,7 @@ import {BFS} from "../algorithms/BFS";
 import {DFS} from "../algorithms/DFS";
 import {Astar} from "../algorithms/Astar";
 import {BestFS} from "../algorithms/BestFS";
+import {Redirect} from "react-router-dom";
 
 import Navbar from "../Pages//Navbar";
 import Rules from "../Pages/Rule";
@@ -64,6 +65,7 @@ export default class PathfindingVisualizer extends Component {
   }
 
   animate(visitedNodesInOrder, nodesInShortestPathOrder) {
+    if (visitedNodesInOrder.length === null) return;
     for (let i = 0; i <= visitedNodesInOrder.length; i++) {
       if (i === visitedNodesInOrder.length) {
         setTimeout(() => {
@@ -122,6 +124,10 @@ export default class PathfindingVisualizer extends Component {
   render() {
     const grid = this.state.grid;
     const mouseIsPressed = this.state.mouseIsPressed;
+
+    if (!this.props.location.state) {
+      return <Redirect to={"/Homepage"} />;
+    }
 
     return (
       <div>

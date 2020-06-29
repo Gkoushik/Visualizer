@@ -1,21 +1,32 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import Rules from "./Rule";
 
 class Navbar extends Component {
-  state = {};
-  render() {
-    return (
-      <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Visulaizer</span>
+  state = {
+    path: "./",
+  };
+  componentDidMount() {
+    if (this.props.running) {
+      this.setState({path: " "});
+    } else {
+      this.setState({path: " ./"});
+    }
+    console.log(this.state.path);
+  }
 
+  render() {
+    let path = this.state.path;
+    return (
+      <nav className="navbar navbar-light bg-light">
+        <span className="navbar-brand mb-0 h1">Visulaizer</span>
         <Link
           className="container"
           to={{
-            pathname: "/",
+            pathname: "./",
           }}>
           Home
         </Link>
+        ;
       </nav>
     );
   }
