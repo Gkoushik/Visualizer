@@ -18,3 +18,11 @@
   position: absolute;
   top: 150px;
 }
+
+.visualizepage {
+  overflow: hidden;
+}
+
+.visualizecontainer {
+  margin-left: 50px;
+}

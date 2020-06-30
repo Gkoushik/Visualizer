@@ -1,40 +1,127 @@
 import React, {Component} from "react";
-import Content from "./Content";
 import Navbar from "./Navbar";
+import {Link} from "react-router-dom";
+import "../main.css";
 
 class Homepage extends Component {
-  state = {
-    tags: [
-      ["BFS", "1", "/PathfindingVisualizer"],
-      ["Dijkstra", "0", "/PathfindingVisualizer"],
-      ["DFS (It doesn't garentee shortest path", "2", "/PathfindingVisualizer"],
-      ["Astar", "3", "/PathfindingVisualizer"],
-      ["BestFS", "4", "/PathfindingVisualizer"],
-    ],
-
-    sortingalgos: [
-      ["Merge", "0", "/Sorting"],
-      ["QuickSort", "1", "/Sorting"],
-      ["InsertionSort", "2", "/Sorting"],
-      ["BubbleSort", "3", "/Sorting"],
-    ],
-  };
+  state = {};
 
   render() {
     return (
-      <div>
+      <div className="mainhome">
         <Navbar />
-        <Content
-          title={"Sorting Path Finding"}
-          refs={this.state.sortingalgos}
-          key={"Sorting Path Finding"}
-        />
-        <Content
-          title={"Path Finding"}
-          refs={this.state.tags}
-          key={"Path Finding"}
-        />
-        {/* <Content title={"Graph"} refs={this.state.tags} /> */}
+
+        <div className="row">
+          <div className="col">
+            <div className="card pathcard shadow p-3 mb-5 bg-white rounded">
+              <div className="card-body">
+                <h5 className="card-title">{this.props.title}</h5>
+                <p className="card-text text-center font-weight-bold">
+                  Path finding algorithms
+                </p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    {" "}
+                    <Link
+                      className=" link"
+                      to={{
+                        pathname: "/BFS",
+                      }}>
+                      BFS
+                    </Link>
+                  </li>
+                  <li class="list-group-item">
+                    <Link
+                      className="link"
+                      to={{
+                        pathname: "/BestFS",
+                      }}>
+                      BestFS
+                    </Link>
+                  </li>
+                  <li class="list-group-item">
+                    {" "}
+                    <Link
+                      className=" link"
+                      to={{
+                        pathname: "/Astar",
+                      }}>
+                      Astar
+                    </Link>
+                  </li>
+                  <li class="list-group-item">
+                    <Link
+                      className=" link"
+                      to={{
+                        pathname: "/Dijkstra",
+                      }}>
+                      Dijkstra
+                    </Link>
+                  </li>
+                  <li class="list-group-item">
+                    <Link
+                      className=" link"
+                      to={{
+                        pathname: "/DFS",
+                      }}>
+                      DFS
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="card  sortingcard shadow p-3 mb-5 bg-white rounded">
+              <div className="card-body">
+                <h5 className="card-title">{this.props.title}</h5>
+                <p className="card-text text-center font-weight-bold">
+                  Sorting algorithms
+                </p>
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <Link
+                      className=" link"
+                      to={{
+                        pathname: "/MergeSort",
+                      }}>
+                      MergeSort
+                    </Link>
+                  </li>
+                  <li class="list-group-item">
+                    <Link
+                      className=" link"
+                      to={{
+                        pathname: "/BubbleSort",
+                      }}>
+                      BubbleSort
+                    </Link>
+                  </li>
+                  <li class="list-group-item">
+                    <Link
+                      className=" link"
+                      to={{
+                        pathname: "./QuickSort",
+                      }}>
+                      QuickSort
+                    </Link>
+                  </li>
+                  <li class="list-group-item">
+                    {" "}
+                    <Link
+                      className=" link"
+                      to={{
+                        pathname: "./InsertionSort",
+                      }}>
+                      InsertionSort
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

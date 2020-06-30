@@ -29,11 +29,11 @@ export function partition(array, low, high, animations) {
     // If current element is smaller than the pivot
     if (array[j] < pivot) {
       i++; // increment index of smaller element
-
+      animations.push([i, j, 0]);
       let k = array[j];
       array[j] = array[i];
       array[i] = k;
-      animations.push([i, j, 0]);
+
       //swap arr[i] and arr[j]
     }
   }

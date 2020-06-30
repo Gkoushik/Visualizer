@@ -6,6 +6,7 @@ import {quickSort} from "../sortingAlgorithms/Quicksort";
 import {InsertionSort} from "../sortingAlgorithms/InsertionSort";
 import {BubbleSort} from "../sortingAlgorithms/Bubblesort";
 import {Redirect} from "react-router-dom";
+import NavbarSort from "../Pages/NavforSort";
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED_MS = 1;
@@ -44,9 +45,9 @@ export default class SortingVisualizer extends React.Component {
   sort() {
     const {algonum} = this.props.location.state;
     console.log(algonum);
-    if (algonum === "0") this.mergeSort();
-    else if (algonum === "1") this.quickSort();
-    else if (algonum === "1") this.Inserion();
+    if (algonum === 0) this.mergeSort();
+    else if (algonum === 1) this.quickSort();
+    else if (algonum === 2) this.Inserion();
     else this.bubbleSort();
   }
 
@@ -109,8 +110,7 @@ export default class SortingVisualizer extends React.Component {
   }
 
   quickSort() {
-    this.setState({running: true});
-    console.log("doing quick sort");
+    console.log("doing Quick sort");
     console.log(this.state.array);
     const animations = quickSort(this.state.array);
     console.log(this.state.array);
@@ -118,9 +118,11 @@ export default class SortingVisualizer extends React.Component {
     console.log(animations);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar");
+      if (!arrayBars) return;
       if (animations[i][2]) {
         const barOneIdx = animations[i][0];
         const barTwoIdx = animations[i][1];
+
         const barOneStyle = arrayBars[barOneIdx].style;
         const barTwoStyle = arrayBars[barTwoIdx].style;
         let color;
@@ -135,21 +137,18 @@ export default class SortingVisualizer extends React.Component {
         setTimeout(() => {
           const barOneIdx = animations[i][0];
           const barTwoIdx = animations[i][1];
-
           const barOneStyle = arrayBars[barOneIdx].style;
           const barTwoStyle = arrayBars[barTwoIdx].style;
           const l = barOneStyle.height;
           const r = barTwoStyle.height;
+          console.log(l);
+          console.log(r);
 
           barOneStyle.height = `${r}`;
           barTwoStyle.height = `${l}`;
         }, i * ANIMATION_SPEED_MS);
       }
     }
-  }
-
-  heapSort() {
-    // We leave it as an exercise to the viewer of this code to implement this method.
   }
 
   bubbleSort() {
@@ -184,6 +183,8 @@ export default class SortingVisualizer extends React.Component {
           const barTwoStyle = arrayBars[barTwoIdx].style;
           const l = barOneStyle.height;
           const r = barTwoStyle.height;
+          console.log(l);
+          console.log(r);
 
           barOneStyle.height = `${r}`;
           barTwoStyle.height = `${l}`;
@@ -197,12 +198,23 @@ export default class SortingVisualizer extends React.Component {
     if (!this.props.location.state) {
       return <Redirect to={"/Homepage"} />;
     }
+    var style = {
+      position: "fixed",
+      top: "100px",
+      right: "50px",
+    };
+
+    var style1 = {
+      position: "fixed",
+      top: "200px",
+      right: "50px",
+    };
 
     return (
-      <div>
-        <Navbar running="{this.state.running}" />
-
-        <div className="array-container">
+      <div className="visualizepage">
+        {/* <Navbar running="{this.state.running}" /> */}
+        <NavbarSort />
+        <div className="array-container visualizecontainer ">
           {array.map((value, idx) => (
             <div
               className="array-bar"
@@ -214,11 +226,13 @@ export default class SortingVisualizer extends React.Component {
           ))}
 
           <button
+            style={style}
             className="btn btn-primary link1 "
             onClick={() => this.resetArray()}>
             Generate New Array
           </button>
           <button
+            style={style1}
             className="btn btn-primary link2 "
             onClick={() => this.sort()}>
             Sort

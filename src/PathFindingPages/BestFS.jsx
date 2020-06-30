@@ -11,10 +11,10 @@ class BFS extends Component {
 
   render() {
     const codeString = `
-    export function BFS(grid, startNode, finishNode) {
-        var q = new Queue();
+    export function BestFS(grid, startNode, finishNode) {
+        var q = [];
       
-        q.enqueue(startNode);
+        q.push(startNode);
       
         startNode.distance = 0;
         startNode.isVisited = true;
@@ -22,10 +22,8 @@ class BFS extends Component {
       
         const visitedNodesInOrder = [];
       
-        while (!q.isEmpty()) {
-          var p = q.front();
-      
-          q.dequeue();
+        while (q.length) {
+          var p = q.shift();
       
           // Destination found;
           if (grid[p.row][p.col].isFinish) return visitedNodesInOrder;
@@ -46,7 +44,8 @@ class BFS extends Component {
               !grid[p.row + x[i][0]][p.col + x[i][1]].isVisited &&
               !grid[p.row + x[i][0]][p.col + x[i][1]].isWall
             ) {
-              q.enqueue(grid[p.row + x[i][0]][p.col + x[i][1]]);
+              q.push(grid[p.row + x[i][0]][p.col + x[i][1]]);
+      
               grid[p.row + x[i][0]][p.col + x[i][1]].isVisited = true;
               grid[p.row + x[i][0]][p.col + x[i][1]].distance =
                 grid[p.row][p.col].distance + 1;
@@ -58,8 +57,28 @@ class BFS extends Component {
               visitedNodesInOrder.push(grid[p.row + x[i][0]][p.col + x[i][1]]);
             }
           }
+          sortNodesByDistance(q);
         }
       }
+      
+      export function getNodesInShortestPathOrderBFS(finishNode) {
+        const nodesInShortestPathOrder = [];
+        let currentNode = finishNode;
+        while (currentNode !== null) {
+          console.log(currentNode);
+          nodesInShortestPathOrder.unshift(currentNode);
+          var prenode = currentNode.previousNode;
+      
+          currentNode = currentNode.previousNode;
+          console.log(currentNode);
+          console.log(prenode);
+        }
+        return nodesInShortestPathOrder;
+      }
+      function sortNodesByDistance(unvisitedNodes) {
+        unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
+      }
+      
 `;
     var style = {
       position: "fixed",
@@ -84,24 +103,13 @@ class BFS extends Component {
             <div className="col-5 ">
               <div className="Explanation">
                 <p className="text-center font-weight-bold">Explanation</p>
-                <ol>
-                  <li>
-                    Store each cell as a node with their row, column values and
-                    distance from source cell and previou n
-                  </li>
-                  <li>Start BFS with source cell.</li>
-                  <li>
-                    Mark the source node as visted and make distance equal to 0
-                  </li>
-                  <li>
-                    Keep updating distance from source value in each move. and
-                    Store previous node
-                  </li>
-                  <li>
-                    Return distance when destination is met, else return -1 (no
-                    path exists in between source and destination).
-                  </li>
-                </ol>
+                <div>
+                  Best-First-Search(Grah g, Node start)
+                  <p>Create an empty PriorityQueue PriorityQueue pq;</p>
+                  <p> Until PriorityQueue is empty</p>
+                  <p> u = PriorityQueue.DeleteMin</p>
+                  <p></p>
+                </div>
               </div>
             </div>
           </div>
@@ -113,10 +121,10 @@ class BFS extends Component {
           to={{
             pathname: "./PathfindingVisualizer",
             state: {
-              algonum: 1,
+              algonum: 4,
             },
           }}>
-          Visualize BFS
+          Visualize BestFS
         </Link>
       </div>
     );

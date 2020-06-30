@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import "../main.css";
 
-class Navbar extends Component {
+class NavbarSort extends Component {
   state = {
     path: "./",
   };
@@ -20,16 +20,9 @@ class Navbar extends Component {
     return (
       <nav className="navbar  navbar-light default-color lighten-4">
         <span className="navbar-brand mb-0 h1">Visulaizer</span>
-        <Link
-          className=" Container home "
-          to={{
-            pathname: "./",
-          }}>
-          Home
-        </Link>
       </nav>
     );
   }
 }
 
-export default Navbar;
+export default NavbarSort;

@@ -65,7 +65,10 @@ export default class PathfindingVisualizer extends Component {
   }
 
   animate(visitedNodesInOrder, nodesInShortestPathOrder) {
-    if (visitedNodesInOrder.length === null) return;
+    if (visitedNodesInOrder.length === null) {
+      this.setState({isRunning: false});
+      return;
+    }
     for (let i = 0; i <= visitedNodesInOrder.length; i++) {
       if (i === visitedNodesInOrder.length) {
         setTimeout(() => {
@@ -91,8 +94,9 @@ export default class PathfindingVisualizer extends Component {
           node.col
         );
         this.setState({grid: newGrid});
-      }, 50 * i);
+      }, 25 * i);
     }
+    this.setState({isRunning: false});
   }
 
   visualize() {
@@ -115,13 +119,27 @@ export default class PathfindingVisualizer extends Component {
   }
 
   reset() {
-    const initgridd = getInitialGrid(NO_ROWS, NO_COLS);
-    this.setState({grid: initgridd});
-    this.setState({mouseIsPressed: false});
-    this.setState({isRunning: false});
+    if (!this.state.isRunning) {
+      const initgridd = getInitialGrid(NO_ROWS, NO_COLS);
+      this.setState({grid: initgridd});
+      this.setState({mouseIsPressed: false});
+      this.setState({isRunning: false});
+    }
   }
 
   render() {
+    var style = {
+      position: "fixed",
+      top: "100px",
+      right: "50px",
+    };
+
+    var style1 = {
+      position: "fixed",
+      top: "200px",
+      right: "50px",
+    };
+
     const grid = this.state.grid;
     const mouseIsPressed = this.state.mouseIsPressed;
 
@@ -132,7 +150,10 @@ export default class PathfindingVisualizer extends Component {
     return (
       <div>
         <Navbar />
-        <Rules />
+        <div className="rules">
+          {" "}
+          <Rules />
+        </div>
         <div className="h-100 row align-items-center">
           <div className="grid ">
             {grid.map((row, rowIdx) => {
@@ -173,10 +194,18 @@ export default class PathfindingVisualizer extends Component {
             })}
           </div>
         </div>
-        <button onClick={() => this.visualize()} className="b">
+        <button
+          style={style}
+          onClick={() => this.visualize()}
+          className="btn btn-primary">
           Visualize
         </button>
-        <button onClick={() => this.reset()}>Reset</button>
+        <button
+          className="btn btn-primary"
+          style={style1}
+          onClick={() => this.reset()}>
+          Reset
+        </button>
       </div>
     );
   }
